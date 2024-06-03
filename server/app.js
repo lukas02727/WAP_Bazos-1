@@ -6,7 +6,7 @@ var logger = require('morgan');
 const cors = require("cors");
 const mongoose = require('mongoose');
 mongoose
-.connect('')
+.connect('mongodb+srv://admin:adminadmin@cluster0.xkklycy.mongodb.net/mongodbut?retryWrites=true&w=majority')
 .then(() => console.log("Database connected"))
 .catch((err) => console.log(err));
 
