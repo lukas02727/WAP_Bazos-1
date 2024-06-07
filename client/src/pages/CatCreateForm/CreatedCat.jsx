@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import Home from "../img/home.png"
 
 export default function CreatedCat() {
   const { id } = useParams();  
@@ -9,9 +10,11 @@ export default function CreatedCat() {
       <Link to={`/cat/${id}`}>
         <p>View cat</p>
       </Link>
+     
       <Link to={"/"}>
-        <p>Go home</p>
+      <img src={Home} alt="" />
       </Link>
+      
     </>
   );
 }
