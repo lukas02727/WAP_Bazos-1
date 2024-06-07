@@ -158,7 +158,7 @@ export default function MainPage() {
           </div>
             <div className="middle__">
             <div className="middle_title_">
-             <Link className="under_cover" to={"https://github.com/FilipRiha"}>Filip Říha</Link> | <Link className="under_cover" to={"https://github.com/tomaskocci"}>Tomáš Kočí</Link> | <Link className="under_cover" to={"https://github.com/lukas02727"}>Lukáš Hodovník</Link>
+             <Link className="under_cover" to={"https://github.com/FilipRiha"}>Filip Říha</Link>  <Link className="under_cover" to={"https://github.com/tomaskocci"}>Tomáš Kočí</Link>  <Link className="under_cover" to={"https://github.com/lukas02727"}>Lukáš Hodovník</Link>
             </div>
             </div>
             <div className="right__">
