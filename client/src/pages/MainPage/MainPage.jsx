@@ -120,7 +120,7 @@ export default function MainPage() {
     </div>
       <div className="section_part_title">
         <div className="section_part_title_inside">
-          ELEKTRONIKA
+          ELEKTRO
         </div>
       </div>
       </Link>
@@ -132,7 +132,7 @@ export default function MainPage() {
     </div>
       <div className="section_part_title">
         <div className="section_part_title_inside">
-          NEMOVITOSTI
+          DOMY
         </div>
       </div>
       </Link>
