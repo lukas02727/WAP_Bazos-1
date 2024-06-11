@@ -38,7 +38,7 @@ export default function MainPage() {
 
         <div className="section_part_">
         
-  <Link to={"/createcat"}>
+  <Link to={"/createadv"}>
     
     <div className="img_section_part">
       <img className="img_section_part_inside" src={Plus} alt="" />
@@ -54,7 +54,7 @@ export default function MainPage() {
   </div>
   
   <div className="section_part__">
-  <Link to={"/cats"}>
+  <Link to={"/advs"}>
     <div className="img_section_part">
       <img className="img_section_part_inside" src={View} alt="" />
     </div>
@@ -76,7 +76,7 @@ export default function MainPage() {
 <div className="section_container">
   
   <div className="section_part">
-  <Link to={"/cats"}>
+  <Link to={"/advs"}>
     <div className="img_section_part">
       <img className="img_section_part_inside" src={Car} alt="" />
     </div>

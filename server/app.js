@@ -12,7 +12,7 @@ mongoose
 
 var indexRouter = require('./routes/index');
 var catsRouter = require('./routes/cats');
-var carsRouter = require('./routes/cars');
+var advsRouter = require('./routes/advs');
 
 var app = express();
 
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/cats', catsRouter);
-app.use('/cars', carsRouter);
+app.use('/advs', advsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

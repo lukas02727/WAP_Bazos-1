@@ -8,6 +8,7 @@ const schema = mongoose.Schema({
   description: { type: String, required: true },
   ownername: { type: String, required: true },
   locality: { type: String, required: true },
+  image: { type: String, required: true },
 });
 
-module.exports = mongoose.model("Car", schema);
+module.exports = mongoose.model("Adv", schema);

@@ -36,6 +36,7 @@ export default function CatCreateForm() {
         <input type="text" name="name" required placeholder="Enter cat name" onChange={e => handleChange(e)}/>
         <input type="number" name="legs" required placeholder="Enter legs" onChange={e => handleChange(e)}/>
         <input type="text" name="color" required placeholder="Enter color" onChange={e => handleChange(e)}/>
+        <input accept="image/*" type="file" name="img" required placeholder="Popis inzerátu" onChange={e => handleChange(e)}/>
         <button onClick={handlePost}>
           Create cat
         </button>
