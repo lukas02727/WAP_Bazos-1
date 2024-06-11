@@ -1,6 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { createAdv } from "../../models/Adv";
+import Home from "../img/home.png"
+import Bazar from "../img/bazar.png"
+
 
 export default function AdvCreateForm() {
   const [formData, setFormData] = useState();
@@ -31,24 +34,88 @@ export default function AdvCreateForm() {
 
   return (
     <>
-      <h1>Advertisement create form</h1>
-      <form>
-        <input type="text" name="name" required placeholder="Nadpis inzerátu" onChange={e => handleChange(e)}/>
-        <input type="number" name="phone" required placeholder="Zadejte telefonní číslo" onChange={e => handleChange(e)}/>
-        <input type="text" name="email" required placeholder="Zadejte email" onChange={e => handleChange(e)}/>
-        <input type="number" name="price" required placeholder="Zadejte cenu" onChange={e => handleChange(e)}/>
-        <input type="text" name="description" required placeholder="Popis inzerátu" onChange={e => handleChange(e)}/>
-        <input type="text" name="ownername" required placeholder="Vaše jméno" onChange={e => handleChange(e)}/>
-        <input type="text" name="locality" required placeholder="Popis" onChange={e => handleChange(e)}/>
-        <input accept="image/*" type="file" name="img" required placeholder="Popis inzerátu" onChange={e => handleChange(e)}/>
-
-        <button onClick={handlePost}>
-        Vytvořit
-        </button>
-      </form>
-      <Link to={"/"}>
-        <p>Go back</p>
+    <div id="container">
+        <div className="title_header">
+          <div className="left__">
+          <Link to={"/"}>
+      <img className="img_home" src={Home} alt="" />
       </Link>
+          </div>
+            <div className="middle__">
+            <div className="middle_title">
+              BAZOŠ
+            </div>
+            </div>
+            <div className="right__">
+            <img className="img_home" src={Bazar} alt="" />
+            </div>
+        </div>
+        <div className="section_title">
+<div className="section_title_inside">
+  NOVÝ INZERÁT
+</div>
+    </div>
+    <div className="create_container">
+      <form>
+        <div className="description_create_">
+          <div className="title_of_description">
+            Titulek
+          </div>
+      <input className="input_create" type="text" name="name" required placeholder="Nadpis inzerátu" onChange={e => handleChange(e)}/>
+      </div>
+
+      <div className="description_create">
+          <div className="title_of_description">
+            Telefon
+          </div>
+          <input className="input_create" type="number" name="phone" required placeholder="Zadejte telefonní číslo" onChange={e => handleChange(e)}/>
+      </div>
+
+      <div className="description_create">
+          <div className="title_of_description">
+            Email
+          </div>
+          <input className="input_create" type="text" name="email" required placeholder="Zadejte email" onChange={e => handleChange(e)}/>
+      </div>
+
+      <div className="description_create">
+          <div className="title_of_description">
+            Cena
+          </div>
+          <input className="input_create" type="number" name="price" required placeholder="Zadejte cenu" onChange={e => handleChange(e)}/>
+      </div>
+
+      <div className="description_create">
+          <div className="title_of_description">
+            Popisek
+          </div>
+          <input className="input_create_description" type="text" name="description" required placeholder="Popište produkt" onChange={e => handleChange(e)}/>
+      </div>
+
+      <div className="description_create">
+          <div className="title_of_description">
+            Jméno
+          </div>
+          <input className="input_create" type="text" name="ownername" required placeholder="Zadejte jméno" onChange={e => handleChange(e)}/>
+      </div>
+
+      <div className="description_create">
+          <div className="title_of_description">
+            Adresa
+          </div>
+          <input className="input_create" type="text" name="locality" required placeholder="Zadejte adresu" onChange={e => handleChange(e)}/>
+      </div>
+
+      <div className="description_create">
+          <div className="title_of_description">
+            Fotografie
+          </div>
+          <input className="input_create_photo" accept="image/*" type="file" name="img" required placeholder="Nahrajte fotografii" onChange={e => handleChange(e)}/>
+         
+      </div>
+      </form>
+      </div>
+      </div>
     </>
   );
 }
