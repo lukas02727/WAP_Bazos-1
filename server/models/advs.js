@@ -9,6 +9,7 @@ const schema = mongoose.Schema({
   ownername: { type: String, required: true },
   locality: { type: String, required: true },
   image: { type: String, required: true },
+  password: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Adv", schema);

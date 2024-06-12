@@ -31,6 +31,32 @@ export default function AdvCreateForm() {
   const redirectToSuccessPage = (id) => {
     return navigate(`/createdadv/${id}`)
   }
+  
+  const handleImageChange = (e) => {
+
+    const file = e.target.files[0];
+
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+
+      setFormData({ ...formData, img: reader.result });
+
+    };
+
+    reader.onerror = (error) => {
+
+      console.log("Error: ", error);
+
+    };
+
+  };
+  function App() {
+    const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+     }
 
   return (
     <>
@@ -68,7 +94,11 @@ export default function AdvCreateForm() {
           <div className="title_of_description">
             Telefon
           </div>
-          <input className="input_create" type="number" name="phone" required placeholder="Zadejte telefonní číslo" onChange={e => handleChange(e)}/>
+          <input onKeyPress={(event) => {
+        if (!/[0-9]/.test(event.key)) {
+          event.preventDefault();
+        }
+      }} className="input_create" type="number" name="phone" required placeholder="Zadejte telefonní číslo" onChange={e => handleChange(e)}/>
       </div>
 
       <div className="description_create">
@@ -82,14 +112,20 @@ export default function AdvCreateForm() {
           <div className="title_of_description">
             Cena
           </div>
-          <input className="input_create" type="number" name="price" required placeholder="Zadejte cenu" onChange={e => handleChange(e)}/>
+          <input onKeyPress={(event) => {
+        if (!/[0-9]/.test(event.key)) {
+          event.preventDefault();
+        }
+      }} className="input_create" type="number" name="price" required placeholder="Zadejte cenu" onChange={e => handleChange(e)}/>
       </div>
 
       <div className="description_create">
           <div className="title_of_description">
             Popisek
           </div>
+          
           <input className="input_create_description" type="text" name="description" required placeholder="Popište produkt" onChange={e => handleChange(e)}/>
+          
       </div>
 
       <div className="description_create">
@@ -108,16 +144,25 @@ export default function AdvCreateForm() {
 
       <div className="description_create">
           <div className="title_of_description">
+            Heslo
+          </div>
+          <input className="input_create" type="text" name="password" required placeholder="Zadejte heslo" onChange={e => handleChange(e)}/>
+      </div>
+
+      <div className="description_create">
+          <div className="title_of_description">
             Fotografie
           </div>
-          <input className="input_create_photo" accept="image/*" type="file" name="img" required onChange={e => handleChange(e)}/>
+          <input className="input_create_photo" accept="image/*" type="file" name="img" required onChange={e => handleImageChange(e)}/>
          
       </div>
       <div className="create_adv_button">
       <button className="create_adv_button_inside" onClick={handlePost}>
           Vytvořit
         </button>
+        
         </div>
+        
       </form>
       </div>
       </div>
