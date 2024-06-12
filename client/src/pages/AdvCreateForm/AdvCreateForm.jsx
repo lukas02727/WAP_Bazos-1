@@ -110,9 +110,14 @@ export default function AdvCreateForm() {
           <div className="title_of_description">
             Fotografie
           </div>
-          <input className="input_create_photo" accept="image/*" type="file" name="img" required placeholder="Nahrajte fotografii" onChange={e => handleChange(e)}/>
+          <input className="input_create_photo" accept="image/*" type="file" name="img" required onChange={e => handleChange(e)}/>
          
       </div>
+      <div className="create_adv_button">
+      <button className="create_adv_button_inside" onClick={handlePost}>
+          Vytvořit
+        </button>
+        </div>
       </form>
       </div>
       </div>

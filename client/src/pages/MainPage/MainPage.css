@@ -170,6 +170,7 @@ padding: 10px;
    border: 3px solid black;
    border-radius: 10px;
    padding: 10px;
+   margin-bottom: 25px;
 }
 .description_create, .description_create_{
     width: 60%;
@@ -183,7 +184,7 @@ padding: 10px;
 .title_of_description{
     font-size: 25px;
     margin-bottom: 10px;
-    width: 25%;
+    width: 200px;
     text-align: center;
     border-bottom: 2px solid black;
    
@@ -215,7 +216,27 @@ border-radius: 10px;
     height: 350px;
    
 }
-
+.create_adv_button{
+    width: 30%;
+    
+    margin: auto;
+    margin-top: 20px;
+   
+}
+.create_adv_button_inside{
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    border: 3px solid grey;
+    padding: 7.5px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.create_adv_button_inside:hover{
+    transform: scale(1.1);
+}
 
 @media only screen and (max-width: 600px) {
     .section_container{
