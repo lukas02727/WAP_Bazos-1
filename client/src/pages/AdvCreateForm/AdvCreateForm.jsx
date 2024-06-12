@@ -53,10 +53,7 @@ export default function AdvCreateForm() {
     };
 
   };
-  function App() {
-    const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
-     }
+  
 
   return (
     <>
@@ -149,13 +146,7 @@ export default function AdvCreateForm() {
           <input className="input_create" type="text" name="password" required placeholder="Zadejte heslo" onChange={e => handleChange(e)}/>
       </div>
 
-      <div className="description_create">
-          <div className="title_of_description">
-            Fotografie
-          </div>
-          <input className="input_create_photo" accept="image/*" type="file" name="img" required onChange={e => handleImageChange(e)}/>
-         
-      </div>
+      
       <div className="create_adv_button">
       <button className="create_adv_button_inside" onClick={handlePost}>
           Vytvořit

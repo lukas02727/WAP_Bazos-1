@@ -244,7 +244,25 @@ border-radius: 10px;
 .create_adv_button_inside:hover{
     transform: scale(1.1);
 }
-
+.adv_title{
+    width: 80%;
+    margin: auto;
+    margin-top: 15px;
+    border-bottom: 3px solid black;
+}
+.adv_title_inside{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    
+    
+}
+.adv_view_container{
+    width: 75%;
+    border: 3px solid black;
+    margin-top: 25px;
+    border-radius: 10px;
+}
 @media only screen and (max-width: 600px) {
     .section_container{
         display: grid;

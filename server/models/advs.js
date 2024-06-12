@@ -8,7 +8,6 @@ const schema = mongoose.Schema({
   description: { type: String, required: true },
   ownername: { type: String, required: true },
   locality: { type: String, required: true },
-  image: { type: String, required: true },
   password: { type: String, required: true },
 });
 
