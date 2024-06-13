@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { createAdv } from "../../models/Adv";
 import Home from "../img/home.png"
 import Bazar from "../img/bazar.png"
-
+import Car from "../img/car_pink.png"
 
 export default function AdvCreateForm() {
   const [formData, setFormData] = useState();
@@ -86,7 +86,9 @@ export default function AdvCreateForm() {
           </div>
       <input className="input_create" type="text" name="name" required placeholder="Nadpis inzerátu" onChange={e => handleChange(e)}/>
       </div>
-
+      <div className="view_img__">
+            <img className="view_img_inside" src={Car} alt=""/>
+        </div>
       <div className="description_create">
           <div className="title_of_description">
             Telefon

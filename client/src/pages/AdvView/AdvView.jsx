@@ -106,7 +106,7 @@ export default function AdvView() {
           <div className="info_view">Cena</div>
           <div className="info_view_second">{adv.price} Kč</div>
           <div className="info_view">Telefon</div>
-          <div className="info_view_second">{adv.phone}</div>
+          <div className="info_view_second">+420 {adv.phone}</div>
           <div className="info_view">Adresa</div>
           <div className="info_view_second">{adv.locality}</div>
           <div className="info_view">Email</div>
@@ -114,14 +114,24 @@ export default function AdvView() {
           <div className="info_view">Jméno</div>
           <div className="info_view_second">{adv.ownername}</div>
         </div>
+        <div className="title_of_description_">
+            <div className="title_of_description_inside">
+              Smazání inzerátu 
+            </div>
+          </div>
       <form>
-        <input type="text" placeholder="Heslo" onChange={handleChange} />
-        <button onClick={handleDelete}>Delete</button>
+        <div className="delete_adv">
+        <input className="delete_adv_input" type="text" placeholder="Pro smazání inzerátu vložte heslo" onChange={handleChange} />
+        <button className="delete_button" onClick={handleDelete}>Delete</button>
+        </div>
       </form>
+      <div className="update_adv">
       <Link to={`/updateadv/${id}`}>
-        <p>Úprava inzerátu</p>
-      </Link>
       
+        <div className="update_adv_inside">Úprava inzerátu</div>
+        
+      </Link>
+      </div>
       </div>
       </div>
     </>

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { updateAdv, getAdv } from "../../models/Adv";
 import Home from "../img/home.png"
 import Bazar from "../img/bazar.png"
+import Car from "../img/car_pink.png"
 
 export default function AdvUpdateForm() {
   const { id } = useParams();
@@ -90,7 +91,9 @@ export default function AdvUpdateForm() {
           </div>
       <input className="input_create" type="text" name="name" required placeholder="Nadpis inzerátu" onChange={e => handleChange(e)}/>
       </div>
-
+      <div className="view_img__">
+            <img className="view_img_inside" src={Car} alt=""/>
+        </div>
       <div className="description_create">
           <div className="title_of_description">
             Telefon
@@ -150,7 +153,9 @@ export default function AdvUpdateForm() {
           <input className="input_create" type="text" name="password" required placeholder="Zadejte heslo" onChange={e => handleChange(e)}/>
       </div>
       </form>
-      <button onClick={handlePost}>Upravit</button>
+      <div className="update_adv">
+      <button className="update_adv_inside" onClick={handlePost}>Upravit</button>
+      </div>
       </div>
     </div>
     </>
