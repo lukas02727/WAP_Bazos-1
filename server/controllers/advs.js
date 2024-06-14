@@ -54,7 +54,8 @@ exports.updateAdv = async (req, res) => {
       description: req.body.description,
       ownername: req.body.ownername,
       locality: req.body.locality,
-      password: req.body.password
+      password: req.body.password,
+      img: req.body.img
 
     };
     const result = await Adv.findByIdAndUpdate(req.params.id, data);
@@ -82,7 +83,8 @@ exports.createAdv = async (req, res) => {
       description: req.body.description,
       ownername: req.body.ownername,
       locality: req.body.locality,
-      password: req.body.password
+      password: req.body.password,
+      img: req.body.img
     });
     const result = await data.save();
     if (result) {

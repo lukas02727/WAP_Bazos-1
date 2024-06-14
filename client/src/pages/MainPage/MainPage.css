@@ -12,7 +12,7 @@ input::-webkit-inner-spin-button {
 #container{
     width: 90%;
     margin: auto;
-    
+    margin-bottom: 25px;
     
 }
 .title_header{
@@ -212,8 +212,10 @@ padding: 10px;
    
 }
 .input_create_description{
-    height: 200px;
+   overflow: hidden;
+   padding-top: 15px;
     padding-bottom: 150px;
+    resize: none;
     
 }
 
@@ -335,7 +337,7 @@ border-radius: 10px;
     border-radius: 10px;
 }
 .delete_button{
-    width: 20%;
+    width: 30%;
     margin: auto;
     height: 50px;
     background-color: black;
@@ -368,6 +370,31 @@ border-radius: 10px;
 }
 .update_adv_inside:hover{
     transform: scale(1.1);
+}
+.image_width_cont{
+    border: 3px solid black;
+    width: 80%;
+    border-radius: 10px;
+    margin-left: 10%;
+    
+    
+}
+.img_width{
+    opacity: 0;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 450px;
+   cursor: pointer;
+   
+}
+
+.icon_image_show{
+    width: 20%;
+    
+    position: absolute;
+    left: 40%;
+    top: 45%;
 }
 @media only screen and (max-width: 600px) {
     .section_container{

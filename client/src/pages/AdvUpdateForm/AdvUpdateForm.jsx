@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { updateAdv, getAdv } from "../../models/Adv";
 import Home from "../img/home.png"
 import Bazar from "../img/bazar.png"
-import Car from "../img/car_pink.png"
-
+import Icon from "../img/icons/image_icon.png"
+ 
 export default function AdvUpdateForm() {
   const { id } = useParams();
   const [adv, setAdv] = useState();
@@ -12,7 +12,7 @@ export default function AdvUpdateForm() {
   const [info, setInfo] = useState();
   const [formData, setFormData] = useState();
   const navigate = useNavigate();
-
+ 
   const load = async () => {
     const data = await getAdv(id);
     if (data.status === 500 || data.status === 404) return setLoaded(null);
@@ -21,7 +21,7 @@ export default function AdvUpdateForm() {
       setLoaded(true);
     }
   };
-
+ 
   const postForm = async () => {
     const adv = await updateAdv(id, formData);
     if (adv.status === 200) {
@@ -30,20 +30,20 @@ export default function AdvUpdateForm() {
       setInfo(adv.msg);
     }
   };
-
+ 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+ 
   const handlePost = (e) => {
     e.preventDefault();
     postForm();
   };
-
+ 
   useEffect(() => {
     load();
   }, []);
-
+ 
   if (isLoaded === null) {
     return (
       <>
@@ -51,7 +51,7 @@ export default function AdvUpdateForm() {
       </>
     );
   }
-
+ 
   if (!isLoaded) {
     return (
       <>
@@ -59,7 +59,28 @@ export default function AdvUpdateForm() {
       </>
     );
   }
-
+  const handleImageChange = (e) => {
+ 
+    const file = e.target.files[0];
+ 
+    const reader = new FileReader();
+ 
+    reader.readAsDataURL(file);
+ 
+    reader.onload = () => {
+ 
+      setFormData({ ...formData, img: reader.result });
+ 
+    };
+ 
+    reader.onerror = (error) => {
+ 
+      console.log("Error: ", error);
+ 
+    };
+ 
+  };
+ 
   return (
     <>
           <div id="container">
@@ -91,27 +112,22 @@ export default function AdvUpdateForm() {
           </div>
       <input className="input_create" type="text" name="name" required placeholder="Nadpis inzerátu" onChange={e => handleChange(e)}/>
       </div>
-      <div className="view_img__">
-            <img className="view_img_inside" src={Car} alt=""/>
-        </div>
       <div className="description_create">
           <div className="title_of_description">
-            Telefon
+            Obrázek
           </div>
-          <input onKeyPress={(event) => {
-        if (!/[0-9]/.test(event.key)) {
-          event.preventDefault();
-        }
-      }} className="input_create" type="number" name="phone" required placeholder="Zadejte telefonní číslo" onChange={e => handleChange(e)}/>
+          <div className="image_width_cont">
+          <input id="drop_zone" className="img_width"
+                accept="image/*"
+                type="file"
+                name="img"
+                required
+                onChange={handleImageChange}
+                
+              />
+              <img className="icon_image_show" src={Icon} alt="" />
+              </div>
       </div>
-
-      <div className="description_create">
-          <div className="title_of_description">
-            Email
-          </div>
-          <input className="input_create" type="text" name="email" required placeholder="Zadejte email" onChange={e => handleChange(e)}/>
-      </div>
-
       <div className="description_create">
           <div className="title_of_description">
             Cena
@@ -122,30 +138,52 @@ export default function AdvUpdateForm() {
         }
       }} className="input_create" type="number" name="price" required placeholder="Zadejte cenu" onChange={e => handleChange(e)}/>
       </div>
-
       <div className="description_create">
           <div className="title_of_description">
             Popisek
           </div>
-          
+         
           <input className="input_create_description" type="text" name="description" required placeholder="Popište produkt" onChange={e => handleChange(e)}/>
-          
+         
       </div>
-
       <div className="description_create">
           <div className="title_of_description">
             Jméno
           </div>
           <input className="input_create" type="text" name="ownername" required placeholder="Zadejte jméno" onChange={e => handleChange(e)}/>
       </div>
-
+      <div className="description_create">
+          <div className="title_of_description">
+            Email
+          </div>
+          <input className="input_create" type="text" name="email" required placeholder="Zadejte email" onChange={e => handleChange(e)}/>
+      </div>
+      <div className="description_create">
+          <div className="title_of_description">
+            Telefon
+          </div>
+          <input onKeyPress={(event) => {
+        if (!/[0-9]/.test(event.key)) {
+          event.preventDefault();
+        }
+      }} className="input_create" type="number" name="phone" required placeholder="Zadejte telefonní číslo" onChange={e => handleChange(e)}/>
+      </div>
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
       <div className="description_create">
           <div className="title_of_description">
             Adresa
           </div>
           <input className="input_create" type="text" name="locality" required placeholder="Zadejte adresu" onChange={e => handleChange(e)}/>
       </div>
-
+ 
       <div className="description_create">
           <div className="title_of_description">
             Heslo
@@ -161,3 +199,4 @@ export default function AdvUpdateForm() {
     </>
   );
 }
+ 

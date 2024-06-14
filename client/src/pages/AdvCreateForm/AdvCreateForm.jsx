@@ -3,13 +3,24 @@ import { useState, useEffect } from "react";
 import { createAdv } from "../../models/Adv";
 import Home from "../img/home.png"
 import Bazar from "../img/bazar.png"
-import Car from "../img/car_pink.png"
-
+import Icon from "../img/icons/image_icon.png"
+ 
 export default function AdvCreateForm() {
-  const [formData, setFormData] = useState();
-  const [info, setInfo] = useState();
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    price: "",
+    description: "",
+    ownername: "",
+    locality: "",
+    password: "",
+    img: null,
+  });
+ 
+  const [info, setInfo] = useState("");
   const navigate = useNavigate();
-
+ 
   const postForm = async () => {
     const adv = await createAdv(formData);
     if (adv.status === 201) {
@@ -18,43 +29,45 @@ export default function AdvCreateForm() {
       setInfo(adv.msg);
     }
   }
-  
+ 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value});
   }
-  
+ 
   const handlePost = (e) => {
     e.preventDefault();
     postForm();
   }
-
+ 
   const redirectToSuccessPage = (id) => {
     return navigate(`/createdadv/${id}`)
   }
-  
+ 
+   
   const handleImageChange = (e) => {
-
+ 
     const file = e.target.files[0];
-
+ 
     const reader = new FileReader();
-
+ 
     reader.readAsDataURL(file);
-
+ 
     reader.onload = () => {
-
+ 
       setFormData({ ...formData, img: reader.result });
-
+ 
     };
-
+ 
     reader.onerror = (error) => {
-
+ 
       console.log("Error: ", error);
-
+ 
     };
-
+ 
   };
-  
-
+ 
+ 
+ 
   return (
     <>
     <div id="container">
@@ -86,26 +99,24 @@ export default function AdvCreateForm() {
           </div>
       <input className="input_create" type="text" name="name" required placeholder="Nadpis inzerátu" onChange={e => handleChange(e)}/>
       </div>
-      <div className="view_img__">
-            <img className="view_img_inside" src={Car} alt=""/>
-        </div>
       <div className="description_create">
           <div className="title_of_description">
-            Telefon
+            Obrázek
           </div>
-          <input onKeyPress={(event) => {
-        if (!/[0-9]/.test(event.key)) {
-          event.preventDefault();
-        }
-      }} className="input_create" type="number" name="phone" required placeholder="Zadejte telefonní číslo" onChange={e => handleChange(e)}/>
+          <div className="image_width_cont">
+          <input id="drop_zone" className="img_width"
+                accept="image/*"
+                type="file"
+                name="img"
+                required
+                onChange={handleImageChange}
+                
+              />
+              <img className="icon_image_show" src={Icon} alt="" />
+              </div>
       </div>
+   
 
-      <div className="description_create">
-          <div className="title_of_description">
-            Email
-          </div>
-          <input className="input_create" type="text" name="email" required placeholder="Zadejte email" onChange={e => handleChange(e)}/>
-      </div>
 
       <div className="description_create">
           <div className="title_of_description">
@@ -117,45 +128,70 @@ export default function AdvCreateForm() {
         }
       }} className="input_create" type="number" name="price" required placeholder="Zadejte cenu" onChange={e => handleChange(e)}/>
       </div>
-
       <div className="description_create">
           <div className="title_of_description">
             Popisek
           </div>
-          
-          <input className="input_create_description" type="text" name="description" required placeholder="Popište produkt" onChange={e => handleChange(e)}/>
-          
+         
+          <textarea className="input_create_description" type="text" name="description" required placeholder="Popište produkt" onChange={e => handleChange(e)}/>
+         
       </div>
-
       <div className="description_create">
           <div className="title_of_description">
             Jméno
           </div>
           <input className="input_create" type="text" name="ownername" required placeholder="Zadejte jméno" onChange={e => handleChange(e)}/>
       </div>
-
+      <div className="description_create">
+          <div className="title_of_description">
+            Email
+          </div>
+          <input className="input_create" type="text" name="email" required placeholder="Zadejte email" onChange={e => handleChange(e)}/>
+      </div>
+      <div className="description_create">
+          <div className="title_of_description">
+            Telefon
+          </div>
+          <input onKeyPress={(event) => {
+        if (!/[0-9]/.test(event.key)) {
+          event.preventDefault();
+        }
+      }} className="input_create" type="number" name="phone" required placeholder="Zadejte telefonní číslo" onChange={e => handleChange(e)}/>
+      </div>
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
       <div className="description_create">
           <div className="title_of_description">
             Adresa
           </div>
           <input className="input_create" type="text" name="locality" required placeholder="Zadejte adresu" onChange={e => handleChange(e)}/>
       </div>
-
+ 
       <div className="description_create">
           <div className="title_of_description">
             Heslo
           </div>
           <input className="input_create" type="text" name="password" required placeholder="Zadejte heslo" onChange={e => handleChange(e)}/>
+          
       </div>
-
+ 
       
+         
+       
       <div className="create_adv_button">
       <button className="create_adv_button_inside" onClick={handlePost}>
           Vytvořit
         </button>
-        
+       
         </div>
-        
+       
       </form>
       </div>
       </div>

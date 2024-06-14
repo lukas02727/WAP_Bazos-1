@@ -1,10 +1,10 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { getAdv, deleteAdv } from "../../models/Adv";
+import { getAdv, deleteAdv, updateAdv } from "../../models/Adv";
 import { useState, useEffect } from "react";
 import Home from "../img/home.png"
 import Bazar from "../img/bazar.png"
 import Car from "../img/car_pink.png"
-
+ 
 export default function AdvView() {
   const { id } = useParams();
   const [adv, setAdv] = useState();
@@ -12,7 +12,7 @@ export default function AdvView() {
   const [info, setInfo] = useState();
   const [formData, setFormData] = useState();
   const navigate = useNavigate();
-
+ 
   const load = async () => {
     const data = await getAdv(id);
     if (data.status === 500 || data.status === 404) return setLoaded(null);
@@ -21,15 +21,15 @@ export default function AdvView() {
       setLoaded(true);
     }
   }
-
+ 
   useEffect(() => {
     load();
   }, []);
-
+ 
   const handleChange = (e) => {
     setFormData(e.target.value);
   }
-
+ 
   const handleDelete = async (e) => {
     e.preventDefault();
     if (adv.password === formData) {
@@ -43,7 +43,20 @@ export default function AdvView() {
       setInfo("Wrong input!");
     }
   }
-
+ 
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    if (adv.password === formData) {
+      const data = await updateAdv(id);
+      if (data.status === 200) {
+        navigate("/");
+      } else {
+        setInfo(data.msg);
+      }
+    } else {
+      setInfo("Wrong input!");
+    }
+  }
   if (isLoaded === null) {
     return (
       <>
@@ -51,7 +64,7 @@ export default function AdvView() {
       </>
     )
   }
-
+ 
   if (!isLoaded) {
     return (
       <>
@@ -59,7 +72,7 @@ export default function AdvView() {
       </>
     )
   }
-
+ 
   return (
     <>
       <div id="container">
@@ -85,12 +98,12 @@ export default function AdvView() {
           </div>
         </div>
         <div className="view_img_">
-            <img className="view_img_inside" src={Car} alt=""/>
+          <img className="view_img_inside" src={adv.img} alt="Adv" />
         </div>
         <div className="description_of_adv">
           <div className="title_of_description_">
             <div className="title_of_description_inside">
-              Popisek 
+              Popisek
             </div>
           </div>
           <div className="description_of_adv_inside">
@@ -99,7 +112,7 @@ export default function AdvView() {
         </div>
         <div className="title_of_description_">
             <div className="title_of_description_inside">
-              Informace 
+              Informace
             </div>
           </div>
         <div className="informations_container">
@@ -116,20 +129,21 @@ export default function AdvView() {
         </div>
         <div className="title_of_description_">
             <div className="title_of_description_inside">
-              Smazání inzerátu 
+              Smazání inzerátu
             </div>
           </div>
       <form>
         <div className="delete_adv">
-        <input className="delete_adv_input" type="text" placeholder="Pro smazání inzerátu vložte heslo" onChange={handleChange} />
-        <button className="delete_button" onClick={handleDelete}>Delete</button>
+        <input className="delete_adv_input" type="text" placeholder={adv.password} onChange={handleChange} />
+        <button className="delete_button" onClick={handleDelete}>Smazat</button>
         </div>
       </form>
+      
       <div className="update_adv">
       <Link to={`/updateadv/${id}`}>
-      
+     
         <div className="update_adv_inside">Úprava inzerátu</div>
-        
+       
       </Link>
       </div>
       </div>
@@ -137,3 +151,4 @@ export default function AdvView() {
     </>
   );
 }
+ 
