@@ -3,7 +3,7 @@ import { getAdv, deleteAdv, updateAdv } from "../../models/Adv";
 import { useState, useEffect } from "react";
 import Home from "../img/home.png"
 import Bazar from "../img/bazar.png"
-import Car from "../img/car_pink.png"
+
  
 export default function AdvView() {
   const { id } = useParams();

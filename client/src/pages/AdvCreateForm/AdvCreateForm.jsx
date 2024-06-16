@@ -40,7 +40,7 @@ export default function AdvCreateForm() {
   }
  
   const redirectToSuccessPage = (id) => {
-    return navigate(`/createdadv/${id}`)
+    return navigate(`/`)
   }
  
    

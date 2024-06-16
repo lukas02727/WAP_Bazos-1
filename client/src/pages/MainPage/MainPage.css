@@ -396,6 +396,37 @@ border-radius: 10px;
     left: 40%;
     top: 45%;
 }
+.view_container__{
+    width: 80%;
+   
+    margin: auto;
+ 
+}
+.view_divide_advs__{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 250px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.test{
+    width: 80%;
+    margin: auto;
+ margin-top: 20px;
+    padding: 20px;
+    background-color: black;
+    border-radius: 10px;
+    border: 3px solid grey;
+}
+.test_{
+    color: white;
+}
+.test:hover{
+    transform: scale(1.1);
+}
 @media only screen and (max-width: 600px) {
     .section_container{
         display: grid;
